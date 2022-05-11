@@ -49,8 +49,7 @@
       //        because it tests whether the element was there at the time of
       //        the click, not whether it is there now, that the event has arrived
       //        to the top.
-      // @NOTE: `.path` is non-standard, the standard way is `.composedPath()`
-      var path = ev.path || (ev.composedPath ? ev.composedPath() : undefined);
+      var path = ev.composedPath ? ev.composedPath() : undefined;
       if (initialMacrotaskEnded && (path ? path.indexOf(el) < 0 : !el.contains(ev.target))) {
         return callback.call(vm, ev);
       }
